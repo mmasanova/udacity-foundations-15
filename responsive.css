@@ -1,0 +1,231 @@
+h2 {
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__menu {
+  display: none;
+}
+
+.hero, .top-news, .scores, .weather, .recent-news {
+  order: 10;
+}
+
+.hero .description p, .snippet p {
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 2.4em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: 0em;
+  padding-right: 1em;
+}
+
+.scores {
+  width: 100%;
+  overflow: auto;
+}
+
+.snippet p {
+  max-height: 4.8em;
+}
+
+.snippet__thumbnail {
+  display: none;
+}
+
+.hero .description p:before, .snippet p:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.hero .description p:after, .snippet p:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: #4c4c4c;
+}
+
+.snippet p:after {
+  background: #fff;
+}
+
+
+.hero article {
+  height: 50%;
+}
+
+@media screen and (max-width: 500px)
+{
+  .scores__location {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .header__logo {
+    height: 48px;
+    margin-right: 0.5em;
+  }
+  .header__title {
+    margin-left: 0;
+    font-size: 1.3em;
+    vertical-align: bottom; 
+    margin-bottom: 1em;
+  }
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+    text-align: left;
+  }
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+  .header__menu svg {
+    width: 32px;
+    fill: #E0E0E0;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  
+  .hero, .top-news {
+    height: 330px;
+    max-height: 330px;
+  }
+
+  .snippet__thumbnail {
+    display: block;
+  }
+
+  .hero .description p {
+    max-height: 3.6em;
+  }
+
+  .hero article {
+    height: 40%;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .hero {
+    order: 0;
+    width: 60%;
+  }
+
+  .hero article {
+    height: 50%;
+  }
+
+  .hero .description p {
+    max-height: 3.6em;
+  }
+
+  .weather {
+    order: 1;
+    width: 40%;
+  }
+
+  .weather__next {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (min-width: 575px) {
+  .weather__next__item span {
+    width: 2em;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .hero {
+    width: 50%;
+  }
+  .top-news {
+    order: 1;
+    width: 50%;
+  }
+  .scores {
+    order: 2;
+    width: 60%;
+  }
+  .weather {
+    order: 3;
+  }
+
+  .weather__next__item span {
+    width: auto;
+  }
+
+  .scores__location {
+    display: none;
+  }
+
+  .snippet p {
+    max-height: 6em;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  main, .header__inner, .nav, .content {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero .description p {
+    max-height: 3.6em;
+  }
+
+  .snippet p {
+    max-height: 7.2em;
+  }
+
+  .hero article {
+    height: 50%;
+  }
+
+}
